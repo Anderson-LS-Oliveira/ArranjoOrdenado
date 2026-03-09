@@ -8,10 +8,10 @@ public class ArranjoOrdenado {
     private int capacidade;
     private int tamanho;
 
-    public ArranjoOrdenado(int capicidade){
-        this.capacidade = capicidade;
+    public ArranjoOrdenado(int capacidade){
+        this.capacidade = capacidade;
         this.tamanho = 0;
-        arranjo = new int[capicidade];
+        arranjo = new int[capacidade];
     }
 
     public void percorrer(Consumer<Integer> consumer){
@@ -59,7 +59,7 @@ public class ArranjoOrdenado {
         tamanho--;
     }
 
-    public static void inserirCrescente(int valor){
+    public static long inserirCrescente(int valor){
         ArranjoOrdenado arranjo = new ArranjoOrdenado(valor);
         long T1 = System.nanoTime();
 
@@ -67,12 +67,10 @@ public class ArranjoOrdenado {
             arranjo.inserir(i);
         }
         long T2 = System.nanoTime();
-        long Total = T2 - T1;
-
-        System.out.println("Inserir em ordem crescente - Tempo final: " + Total);
+        return T2 - T1;
     }
 
-    public static void inserirDescrescente(int valor){
+    public static long inserirDescrescente(int valor){
         ArranjoOrdenado arranjo = new ArranjoOrdenado(valor);
         long T1 = System.nanoTime();
 
@@ -80,12 +78,11 @@ public class ArranjoOrdenado {
             arranjo.inserir(i);
         }
         long T2 = System.nanoTime();
-        long Total = T2 - T1;
 
-        System.out.println("Inserir em ordem decrescente - Tempo final: " + Total);
+        return T2 - T1;
     }
 
-    public static void inserirAleatorio(int valor){
+    public static long inserirAleatorio(int valor){
         ArranjoOrdenado arranjo = new ArranjoOrdenado(valor);
         Random random = new Random();
         int[] numeros = new int[valor];
@@ -97,9 +94,8 @@ public class ArranjoOrdenado {
             numeros[i] = num;
         }
         long T2 = System.nanoTime();
-        long Total = T2 - T1;
 
-        System.out.println("Inserir aleatóriamente - Tempo final: " + Total);
+        return T2 - T1;
     }
 
     public static long excluirCrescente(int valor){
@@ -166,10 +162,5 @@ public class ArranjoOrdenado {
         }
         return Math.sqrt(soma / tempos.length);
     }
-
-
-
-
-
 
 }

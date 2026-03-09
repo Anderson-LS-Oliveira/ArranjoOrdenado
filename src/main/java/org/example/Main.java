@@ -8,32 +8,55 @@ import static org.example.ArranjoOrdenado.*;
 public class Main {
     public static void main(String[] args) {
 
-        int n = 100;
-        int execucoes = 100;
+        int n = 10000;
+        int execucoes = 1000;
 
-        long[] temposCrescente = new long[execucoes];
-        long[] temposDecrescente = new long[execucoes];
-        long[] temposAleatorio = new long[execucoes];
+        long[] temposInsercaoCrescente = new long[execucoes];
+        long[] temposInsercaoDecrescente = new long[execucoes];
+        long[] temposInsercaoAleatorio = new long[execucoes];
+
+        long[] temposExclusaoCrescente = new long[execucoes];
+        long[] temposExclusaoDecrescente = new long[execucoes];
+        long[] temposExclusaoAleatorio = new long[execucoes];
+
 
         for(int i = 0; i < execucoes; i++){
 
-            temposCrescente[i] = excluirCrescente(n);
-            temposDecrescente[i] = excluirDecrescente(n);
-            temposAleatorio[i] = excluirAleatorio(n);
+            temposInsercaoCrescente[i] = inserirCrescente(n);
+            temposInsercaoDecrescente[i] = inserirDescrescente(n);
+            temposInsercaoAleatorio[i] = inserirAleatorio(n);
+
+            temposExclusaoCrescente[i] = excluirCrescente(n);
+            temposExclusaoDecrescente[i] = excluirDecrescente(n);
+            temposExclusaoAleatorio[i] = excluirAleatorio(n);
         }
 
-        double mediaC = media(temposCrescente);
-        double mediaD = media(temposDecrescente);
-        double mediaA = media(temposAleatorio);
+        double mediaInsercaoCrescente = media(temposInsercaoCrescente);
+        double mediaInsercaoDecrescente = media(temposInsercaoDecrescente);
+        double mediaInsercaoAleatorio = media(temposInsercaoAleatorio);
 
-        double desvioC = desvioPadrao(temposCrescente, mediaC);
-        double desvioD = desvioPadrao(temposDecrescente, mediaD);
-        double desvioA = desvioPadrao(temposAleatorio, mediaA);
+        double desvioInsercaoCrescente = desvioPadrao(temposInsercaoCrescente, mediaInsercaoCrescente);
+        double desvioInsercaoDecrescente = desvioPadrao(temposInsercaoDecrescente, mediaInsercaoDecrescente);
+        double desvioInsercaoAleatorio = desvioPadrao(temposInsercaoAleatorio, mediaInsercaoAleatorio);
 
-        System.out.println("Resultados:");
+        double mediaExclusaoCrescente = media(temposExclusaoCrescente);
+        double mediaExclusaoDecrescente = media(temposExclusaoDecrescente);
+        double mediaExclusaoAleatorio = media(temposExclusaoAleatorio);
 
-        System.out.println("Crescente: " + mediaC + " +/- " + desvioC);
-        System.out.println("Decrescente: " + mediaD + " +/- " + desvioD);
-        System.out.println("Aleatorio: " + mediaA + " +/- " + desvioA);
+        double desvioExclusaoCrescente = desvioPadrao(temposExclusaoCrescente, mediaExclusaoCrescente);
+        double desvioExclusaoDecrescente = desvioPadrao(temposExclusaoDecrescente, mediaExclusaoDecrescente);
+        double desvioExclusaoAleatorio = desvioPadrao(temposExclusaoAleatorio, mediaExclusaoAleatorio);
+
+        System.out.println("Insercao:");
+        System.out.println("Crescente: " + mediaInsercaoCrescente + " +/- " + desvioInsercaoCrescente);
+        System.out.println("Decrescente: " + mediaInsercaoDecrescente + " +/- " + desvioInsercaoDecrescente);
+        System.out.println("Aleatorio: " + mediaInsercaoAleatorio + " +/- " + desvioInsercaoAleatorio);
+
+        System.out.println();
+
+        System.out.println("Exclusao:");
+        System.out.println("Crescente: " + mediaExclusaoCrescente + " +/- " + desvioExclusaoCrescente);
+        System.out.println("Decrescente: " + mediaExclusaoDecrescente + " +/- " + desvioExclusaoDecrescente);
+        System.out.println("Aleatorio: " + mediaExclusaoAleatorio + " +/- " + desvioExclusaoAleatorio);
     }
 }
