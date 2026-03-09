@@ -41,20 +41,20 @@ public class ArranjoOrdenado {
     }
 
     public void excluir(int valor){
-        if (tamanho < 1) {
+        if (tamanho == 0) {
             throw new RuntimeException("O arranjo está vazio!");
         }
         int indice = 0;
         for (indice = 0; indice < tamanho; indice++){
-            if (valor < arranjo[indice]){
+            if (valor == arranjo[indice]){
                 break;
             }
         }
-        if (indice == tamanho -1){
+        if (indice == tamanho){
             throw new RuntimeException("O elemento "+valor+" não está no arranjo.");
         }
-        for (int i = indice; i < tamanho; i++){
-            arranjo[i-1] = arranjo[i];
+        for (int i = indice; i < tamanho -1; i++){
+            arranjo[i] = arranjo[i +1];
         }
         tamanho--;
     }
@@ -100,6 +100,71 @@ public class ArranjoOrdenado {
         long Total = T2 - T1;
 
         System.out.println("Inserir aleatóriamente - Tempo final: " + Total);
+    }
+
+    public static long excluirCrescente(int valor){
+        ArranjoOrdenado arranjo = new ArranjoOrdenado(valor);
+
+        for(int i = 1; i <= valor; i++){
+            arranjo.inserir(i);
+        }
+        long T1 = System.nanoTime();
+        for(int i = 1; i <= valor; i++){
+            arranjo.excluir(i);
+        }
+        long T2 = System.nanoTime();
+
+        return T2 - T1;
+    }
+
+    public static long excluirDecrescente(int valor){
+        ArranjoOrdenado arranjo = new ArranjoOrdenado(valor);
+
+        for(int i = 1; i <= valor; i++){
+            arranjo.inserir(i);
+        }
+        long T1 = System.nanoTime();
+        for(int i = valor; i >= 1; i--){
+            arranjo.excluir(i);
+        }
+        long T2 = System.nanoTime();
+
+        return T2 - T1;
+    }
+
+    public static long excluirAleatorio(int valor){
+        ArranjoOrdenado arranjo = new ArranjoOrdenado(valor);
+        Random random = new Random();
+
+        int[] numeros = new int[valor];
+        for(int i = 0; i < valor; i++){
+            int num = random.nextInt(valor);
+            arranjo.inserir(num);
+            numeros[i] = num;
+        }
+        long T1 = System.nanoTime();
+        for(int i = 0; i < valor; i++){
+            arranjo.excluir(numeros[i]);
+        }
+        long T2 = System.nanoTime();
+
+        return T2 - T1;
+    }
+
+    public static double media(long[] tempos){
+        long soma = 0;
+        for(long t : tempos){
+            soma += t;
+        }
+        return soma / (double) tempos.length;
+    }
+
+    public static double desvioPadrao(long[] tempos, double media){
+        double soma = 0;
+        for(long t : tempos){
+            soma += Math.pow(t - media, 2);
+        }
+        return Math.sqrt(soma / tempos.length);
     }
 
 
