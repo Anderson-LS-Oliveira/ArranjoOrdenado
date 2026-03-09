@@ -74,4 +74,53 @@ public class ArranjoOrdenadoTest {
         Assertions.assertEquals("159",builder.toString());
     }
 
+    @Test
+    public void excluirDeArranjoVazio(){
+        ArranjoOrdenado arranjo = new ArranjoOrdenado(5);
+        try{
+            arranjo.excluir(10);
+            Assertions.fail("Deve lançar uma exceção quando o ArranjoOrdenado estiver vazio.");
+        }catch (RuntimeException ignored){}
+    }
+
+    @Test
+    public void excluirValorInexistente(){
+        ArranjoOrdenado arranjo = new ArranjoOrdenado(5);
+        try{
+            arranjo.inserir(4);
+            arranjo.inserir(9);
+            arranjo.excluir(7);
+            Assertions.fail("Deve lançar uma exceção quando o elemento não estiver no arranjo.");
+        }catch (RuntimeException ignored){}
+    }
+
+    @Test
+    public void excluirPrimeiroElemento(){
+        ArranjoOrdenado arranjo = new ArranjoOrdenado(5);
+        arranjo.inserir(4);
+        arranjo.inserir(9);
+        arranjo.inserir(5);
+        arranjo.excluir(4);
+
+        StringBuilder builder = new StringBuilder();
+        arranjo.percorrer(i -> builder.append(i));
+
+        Assertions.assertEquals("59",builder.toString());
+    }
+
+    @Test
+    public void excluirUltimoElemento(){
+        ArranjoOrdenado arranjo = new ArranjoOrdenado(5);
+        arranjo.inserir(4);
+        arranjo.inserir(9);
+        arranjo.inserir(5);
+        arranjo.excluir(9);
+
+        StringBuilder builder = new StringBuilder();
+        arranjo.percorrer(i -> builder.append(i));
+
+        Assertions.assertEquals("45",builder.toString());
+    }
+
+
 }

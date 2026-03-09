@@ -8,8 +8,8 @@ import static org.example.ArranjoOrdenado.*;
 public class Main {
     public static void main(String[] args) {
 
-        int n = 10000;
-        int execucoes = 1000;
+        int n = 100000;
+        int execucoes = 100;
 
         long[] temposInsercaoCrescente = new long[execucoes];
         long[] temposInsercaoDecrescente = new long[execucoes];
