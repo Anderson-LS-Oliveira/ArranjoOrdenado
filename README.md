@@ -12,13 +12,6 @@ EXCLUSAO:
 | Decrescente     | 6.89827005E8     | 1.3952865421778927E7   |
 | Aleatório       | 6.37637495E8     | 3.363635195993879E7    |
 
-EXCLUSAO:
-| Tipo de entrada | Tempo médio (ns) |      Desvio padrão     |
-| --------------- | ---------------- | ---------------------- |
-| Crescente       | 2.27754282E8     | 6798707.864592801      |
-| Decrescente     | 6.89827005E8     | 1.3952865421778927E7   |
-| Aleatório       | 6.37637495E8     | 3.363635195993879E7    |
-
 |Inserção		        |Ordenação crescente		            |Ordenação decrescente                 |
 |-----------------------|---------------------------------------|--------------------------------------|
 |Inserção crescente	    | 6.8710119E8 +/- 6328952.141697708		| 6.8669425E8 +/- 3759762.7586990115   |
@@ -38,8 +31,9 @@ ArranjoOrdenado
 - int[] arranjo
 - int tamanho
 - int capacidade
----------------------------------
-+ ArranjoOrdenado(int capacidade)
+- boolean crescente
+--------------------------------
++ ArranjoOrdenado(int capacidade, boolean crescente)
 + void inserir(int valor)
 + void excluir(int valor)
 + void percorrer(Consumer<Integer> consumer)
