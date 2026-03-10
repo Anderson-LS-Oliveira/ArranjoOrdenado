@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.Random;
-
 import static org.example.ArranjoOrdenado.*;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -18,7 +15,6 @@ public class Main {
         long[] temposExclusaoCrescente = new long[execucoes];
         long[] temposExclusaoDecrescente = new long[execucoes];
         long[] temposExclusaoAleatorio = new long[execucoes];
-
 
         for(int i = 0; i < execucoes; i++){
 
@@ -47,16 +43,30 @@ public class Main {
         double desvioExclusaoDecrescente = desvioPadrao(temposExclusaoDecrescente, mediaExclusaoDecrescente);
         double desvioExclusaoAleatorio = desvioPadrao(temposExclusaoAleatorio, mediaExclusaoAleatorio);
 
-        System.out.println("Insercao:");
-        System.out.println("Crescente: " + mediaInsercaoCrescente + " +/- " + desvioInsercaoCrescente);
-        System.out.println("Decrescente: " + mediaInsercaoDecrescente + " +/- " + desvioInsercaoDecrescente);
-        System.out.println("Aleatorio: " + mediaInsercaoAleatorio + " +/- " + desvioInsercaoAleatorio);
+        System.out.println("Inserção\t\tOrdenação crescente\t\tOrdenação decrescente");
+
+        System.out.println("Inserção crescente\t"
+                + mediaInsercaoCrescente + " +/- " + desvioInsercaoCrescente + "\t\t"
+                + mediaInsercaoCrescente + " +/- " + desvioInsercaoCrescente);
+
+        System.out.println("Inserção decrescente\t"
+                + mediaInsercaoDecrescente + " +/- " + desvioInsercaoDecrescente + "\t\t"
+                + mediaInsercaoDecrescente + " +/- " + desvioInsercaoDecrescente);
+
+        System.out.println("Inserção aleatória\t"
+                + mediaInsercaoAleatorio + " +/- " + desvioInsercaoAleatorio + "\t\t"
+                + mediaInsercaoAleatorio + " +/- " + desvioInsercaoAleatorio);
 
         System.out.println();
+        System.out.println("Exclusão:");
 
-        System.out.println("Exclusao:");
-        System.out.println("Crescente: " + mediaExclusaoCrescente + " +/- " + desvioExclusaoCrescente);
-        System.out.println("Decrescente: " + mediaExclusaoDecrescente + " +/- " + desvioExclusaoDecrescente);
-        System.out.println("Aleatorio: " + mediaExclusaoAleatorio + " +/- " + desvioExclusaoAleatorio);
+        System.out.println("Exclusão crescente\t"
+                + mediaExclusaoCrescente + " +/- " + desvioExclusaoCrescente);
+
+        System.out.println("Exclusão decrescente\t"
+                + mediaExclusaoDecrescente + " +/- " + desvioExclusaoDecrescente);
+
+        System.out.println("Exclusão aleatória\t"
+                + mediaExclusaoAleatorio + " +/- " + desvioExclusaoAleatorio);
     }
 }
